@@ -29,7 +29,7 @@
 #include <string>
 
 #include "vendor_init.h"
-#include "property_service.h"
+#include <cutils/properties.h>
 #include "log.h"
 #include "util.h"
 
@@ -42,7 +42,7 @@ void init_target_properties()
     std::string buf;
     int rc;
 
-    rc = property_get("ro.board.platform", platform);
+    rc = property_get("ro.board.platform", platform, "hi6250");
     if (!rc || strncmp(platform, "hi6250", PROP_VALUE_MAX))
         return;
 
